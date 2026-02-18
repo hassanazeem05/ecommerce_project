@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="fw-bold mb-4">{{ category.name }} Companies</h2>
+
+<div class="row">
+    {% for company in companies %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow h-100 text-center">
+                {% if company.logo %}
+                    <img src="{{ company.logo.url }}" height="150" class="p-3">
+                {% endif %}
+                <div class="card-body">
+                    <h5>{{ company.name }}</h5>
+                    <a href="{% url 'company_detail' company.slug %}" class="btn btn-dark mt-2">
+                        View Products
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
